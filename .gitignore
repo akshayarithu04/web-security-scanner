@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+env/
+
+# Database
+scanner.db
+
+# Generated reports
+reports/*.pdf
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store

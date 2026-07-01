@@ -1,0 +1,37 @@
+body{
+    background:#0d1117;
+}
+
+.card{
+    background:#161b22;
+    color:white;
+    border:none;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,.4);
+}
+
+.card-header{
+    background:#21262d;
+    border-bottom:1px solid #30363d;
+}
+
+.table{
+    margin-bottom:0;
+}
+
+.table td,
+.table th{
+    vertical-align:middle;
+}
+
+.navbar{
+    border-bottom:1px solid #30363d;
+}
+
+.btn{
+    border-radius:8px;
+}
+
+.badge{
+    font-size:0.9rem;
+}
