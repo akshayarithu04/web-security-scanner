@@ -6,10 +6,12 @@ from database import save_scan
 from database import get_history
 from flask import send_file
 from report_generator import generate_pdf
+from database import init_db
 
 from scanner import scan_website
 
 app = Flask(__name__)
+init_db()
 
 latest_report = None
 @app.route("/")

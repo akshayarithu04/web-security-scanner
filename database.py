@@ -2,6 +2,36 @@ import sqlite3
 
 DATABASE = "scanner.db"
 
+def init_db():
+
+    conn = sqlite3.connect(DATABASE)
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS scans(
+
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+        timestamp TEXT,
+
+        url TEXT,
+
+        ip TEXT,
+
+        status INTEGER,
+
+        risk TEXT,
+
+        score INTEGER
+
+    )
+    """)
+
+    conn.commit()
+
+    conn.close()
+
 
 def create_database():
 
@@ -104,3 +134,6 @@ def get_history():
     conn.close()
 
     return rows
+
+if __name__ == "__main__":
+    init_db()
