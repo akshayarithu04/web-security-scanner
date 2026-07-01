@@ -4,9 +4,10 @@ DATABASE = "scanner.db"
 
 def init_db():
 
-    conn = sqlite3.connect(DATABASE)
+    conn = get_connection()
 
     cursor = conn.cursor()
+
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS scans(
@@ -21,6 +22,8 @@ def init_db():
 
         status INTEGER,
 
+        response_time REAL,
+
         risk TEXT,
 
         score INTEGER
@@ -28,10 +31,10 @@ def init_db():
     )
     """)
 
+
     conn.commit()
 
     conn.close()
-
 
 def create_database():
 
@@ -69,45 +72,45 @@ def create_database():
 
 def save_scan(report):
 
-    conn = sqlite3.connect(DATABASE)
+    conn = get_connection()
 
     cursor = conn.cursor()
 
+
     cursor.execute("""
+    INSERT INTO scans
+    (
+        timestamp,
+        url,
+        ip,
+        status,
+        response_time,
+        risk,
+        score
+    )
 
-        INSERT INTO scans(
+    VALUES (?,?,?,?,?,?,?)
 
-            url,
+    """,
 
-            ip,
+    (
 
-            status,
+        datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
 
-            score,
+        report.get("url",""),
 
-            risk,
+        report.get("ip",""),
 
-            response_time
+        report.get("status",0),
 
-        )
+        report.get("response_time",0),
 
-        VALUES(?,?,?,?,?,?)
+        report.get("risk","Unknown"),
 
-    """,(
-
-        report["url"],
-
-        report["ip"],
-
-        report["status"],
-
-        report["score"],
-
-        report["risk"],
-
-        report["response_time"]
+        report.get("score",0)
 
     ))
+
 
     conn.commit()
 
