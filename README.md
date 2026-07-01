@@ -6,13 +6,6 @@ The project performs security header analysis, SSL certificate validation, HTTPS
 
 ---
 
-## 🚀 Live Demo
-
-🔗 **Live Application:**  
-https://web-security-scanner-1-duxp.onrender.com
-
----
-
 ## 📌 Project Overview
 
 The Automated Web Vulnerability Scanner is a cybersecurity tool developed using Python and Flask that helps identify basic security misconfigurations in websites.
